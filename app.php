@@ -66,3 +66,7 @@ function getFilesByEndsWith($endsWith) {
     }
     return $fileNames;
 }
+
+function getArticleLink($id) {
+    return "article_detail.php?id={$id}";
+}

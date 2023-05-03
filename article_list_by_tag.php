@@ -1,5 +1,8 @@
 <?php
-$articles = getArticleByTag($tag);
+require_once "data.php";
+require_once "head.php";
+
+$articles = getArticleByTag($_GET["tag"]);
 ?>
     <section class="section-title">
         <h1 class="con">
@@ -7,7 +10,7 @@ $articles = getArticleByTag($tag);
                 <i class="fas fa-list"></i>
             </span>
             <span>
-                `<?=$tag?>` LIST
+                `<?=$_GET['tag']?>` LIST
             </span>
         </h1>
     </section>
@@ -18,7 +21,7 @@ $articles = getArticleByTag($tag);
                 <ul>
                     <?php foreach($articles as $article) { ?>
                         <li>
-                            <h1><a href="article_detail_<?=$article["id"]?>.ssghtml.php"><?=$article["title"]?></a></h1>    
+                            <h1><a href="<?=getArticleLink($article["id"])?>"><?=$article["title"]?></a></h1>    
                             <div class="article-list__reg-date">
                                 <span><i class="fas fa-calendar-alt"></i></span>
                                 <span><?=$article["regDate"]?></span>
@@ -29,3 +32,7 @@ $articles = getArticleByTag($tag);
             </div>
         </div>
     </section>
+
+<?php
+require_once "foot.php";
+?>

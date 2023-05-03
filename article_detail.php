@@ -1,6 +1,8 @@
 <?php
-    $selectArticle = getArticleById($articleId);
-    $articles = getArticles();
+require_once "data.php";
+require_once "head.php";
+
+$selectArticle = getArticleById($_GET["id"]);
 ?>
 
     <section class="section-title">
@@ -16,7 +18,7 @@
 
     <section class="section-article-detail padding-0-10">
         <div class="con">
-            <h1 class="article-list-box__title"><a href="article_detail_<?=$selectArticle["id"]?>.html"><?=$selectArticle["title"]?></a></h1>
+            <h1 class="article-list-box__title"><a href="<?=getArticleLink($selectArticle["id"])?>"><?=$selectArticle["title"]?></a></h1>
             <div class="article-list-box__reg-date"><?=$selectArticle["regDate"]?></div>
             <div class="article-list-box__writer">
                 <span><?=$selectArticle["writerAvatar"]?></span>
@@ -43,3 +45,7 @@
             </script>
         </div>
 </section>
+
+<?php
+require_once "foot.php";
+?>
